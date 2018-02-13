@@ -2,6 +2,7 @@ const express = require ('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;  // Setting up with an environment value as input for heroku to listen || 3000 is default port for local runs
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -65,6 +66,6 @@ app.get('/bad',(req,res) => {
                     message: 'Error, Unable to fetch Data'
                 });
     })
-app.listen(3000, () => {
-                            console.log('Server is up');
+app.listen(port, () => {
+                            console.log(`Server is up on port ${port}`);
                         });
